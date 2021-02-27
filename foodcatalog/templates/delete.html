@@ -1,0 +1,9 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<form action={% url 'cart_list' %} method="POST"> {% csrf_token %}
+<h1>Do you want to delete {{object.food}}? </h1>
+<input type='submit' value='Yes'/><a href="../">Cancel</a></input>
+</form>
+{% endblock %}

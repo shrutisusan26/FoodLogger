@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+
+
+{% block content %}
+Hello {{user}}, Please <br><br>
+
+<h2 style="font-family:verdana;"><i> Enter the item you want to add to todays calorie intake</i> </h2>
+<br>
+<form action='.' method="POST"> {% csrf_token %}
+{{form.as_p}}
+<br>
+<input type='submit' value='Save'/>
+</form>
+
+{% endblock %}

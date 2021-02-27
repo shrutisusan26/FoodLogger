@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Details</h1>
+  <br>
+  <!-- <p>In {{ food.quantity }} there are </p>
+  <p><strong>Calories:</strong> {{ food.calories }}</p>
+  <p><strong>Proteins:</strong> {{ food.proteins }}</p>
+  <p><strong>Fats:</strong> {{ food.fats }}</p> 
+  <p><strong>Carbs:</strong> {{ food.carbs }}</p> -->
+
+  <div class="container-sm bg-info">
+  <table class="table table-bordered table-hover table-responsive-sm">
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Calories</th>
+      <th>Proteins</th>
+      <th>Fats</th>
+      <th>Carbs</th>
+    </tr>
+    <tr>
+      <td>{{ food.foodname }}</td>
+      <td>{{ food.quantity }}</td>
+      <td>{{ food.calories }}</td>
+      <td>{{ food.proteins }}</td>
+      <td>{{ food.fats }}</td>
+      <td>{{ food.carbs }}</td>
+    </tr>
+  </table>
+</div>
+ 
+{% endblock %}

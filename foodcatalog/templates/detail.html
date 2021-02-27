@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{%  block content %}
+<h1>Food-{{object.foodname}} </h1>
+<p>Calories-{{object.calories}}</p>
+<p>Quantity-{{object.quantity}} cups</p>
+<p>Proteins-{{object.proteins}}</p>
+<p>Fats-{{object.fats}}</p>
+<p>Carbs-{{object.carbs}}</p>
+Do you want to update this item from the catalog? 
+      	  
+      	  <form action={% url 'food-update' object.id %}  method="POST">{%csrf_token %}
+      	  <input type='submit' value='Yes'/><a href="../">Cancel</a></input>
+	  </form>
+      	 
+      	 <br>
+
+{% endblock %}

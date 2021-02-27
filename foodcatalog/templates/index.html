@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+ <p><marquee>Dont focus on how much you eat, focus on what you eat !!</marquee></p>
+  <h1 style="font-family:verdana;text-align:center;"><i>Welcome to FLog</i></h1>
+  <h4 style="font-family:verdana;text-align:center;">Dynamic Content</h4>
+  <p style="font-family:verdana;text-align:center;" >The logger  currently has:</p>
+  <ul style="font-family:verdana;text-align:center;">
+    <li><strong>Foods:</strong> {{ num_foods }}</li>
+  </ul>
+  <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+  
+{% endblock %}

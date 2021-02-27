@@ -1,0 +1,77 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Search for Food to display nutrition.</h1>
+
+  <br/>
+  <form action="{% url 'addtodiary' %}" method="GET" value="{{request.GET.q}}">
+  Search
+  <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search for Food" class="form-control-sm"/>
+  <br>
+  <br>
+  <input type="submit" name="submit" value="Search" class="btn btn-primary"/>
+  </form>
+
+
+{% if submitbutton == 'Search' and request.GET.q != '' %}
+{% if results %}
+<br/>
+Displaying all known foods.
+<br/>
+<br/>
+<!--{% for result in results %}
+
+{{result.foodname}} has {{result.calories}} calories in {{result.quantity}} grams. Its has {{result.carbs}} grams Carbohydrates, {{result.fats}} grams Fats and {{result.proteins}} grams Proteins.
+<br/>
+
+{% endfor %}-->
+
+<div class="container-sm bg-info">
+  <table class="table table-bordered table-hover table-responsive-sm">
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Calories</th>
+      <th>Proteins</th>
+      <th>Fats</th>
+      <th>Carbs</th>
+    </tr>
+    {% for food in results %}
+    <tr>
+      <td>{{ food.foodname }}</td>
+      <td>{{ food.quantity }}</td>
+      <td>{{ food.calories }}</td>
+      <td>{{ food.proteins }}</td>
+      <td>{{ food.fats }}</td>
+      <td>{{ food.carbs }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<form action="{% url 'index' %}" method="post">{% csrf_token %}
+    Do you want to add {{food.foodname}}  to your calorie intake?<br>
+    <br>
+    <input type="submit" value="Register">
+</form>
+<br>
+<br>
+<br>
+Found the food you're looking for? If not please enter your search
+<li><form action='https://www.myfitnesspal.com/food/search?'  method='GET'>
+      	     <input type='text' name='search' placeholder="Your Search"/>
+      	     <input type='submit' value='Search'/>
+</form>
+<br>
+<br>
+{% else %}
+<br/>
+No search results for this food. Please enter your search.
+<form action='https://www.myfitnesspal.com/food/search?'  method='GET'>
+      	     <input type='text' name='search' placeholder="Your Search"/>
+      	     <input type='submit' value='Search'/>
+<br>
+<br>
+{% endif %}
+{% endif %}
+
+{% endblock %}
